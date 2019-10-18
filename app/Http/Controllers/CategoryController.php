@@ -10,6 +10,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('JWT', ['except' => ['login', 'signup']]);
+    }
+
+
     public function index(){
 
         return CategoryResource::collection(Category::latest()->get());
