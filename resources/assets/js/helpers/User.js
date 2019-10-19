@@ -9,6 +9,12 @@ class User{
             .catch(error => console.log(error.response.data))
     }
 
+    signup(data){
+        axios.post('/api/auth/signup', data)
+            .then(res => this.responseAfterLogin(res))
+            .catch(error => this.errors = error.response.data.errors)
+    }
+
     responseAfterLogin(res){
          const access_token = res.data.access_token
          const username = res.data.user
@@ -16,6 +22,7 @@ class User{
          if (Token.isValid(access_token)) {
             //  console.log(username)
              AppStorage.store(username, access_token)
+             window.location = '/forum'
          }
     }
 
@@ -32,7 +39,8 @@ class User{
     }
 
     logout(){
-        return AppStorage.clear();
+        return AppStorage.clear()
+        window.location = '/forum'
     }
 
     name(){
