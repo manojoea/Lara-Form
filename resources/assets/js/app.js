@@ -8,10 +8,16 @@
 require('./bootstrap');
 
 import Vue from 'vue';
-window.Vue = require('vue');
+// window.Vue = require('vue');
 import Vuetify from 'vuetify';
 
 Vue.use(Vuetify);
+
+import User from './helpers/User'
+window.User = User
+console.log(User.id())
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
