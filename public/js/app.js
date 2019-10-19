@@ -76126,9 +76126,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         login: function login() {
             User.login(this.form);
-            // this.$router.push({
-            //     name: 'forum',
-            // })
+            this.$router.push({
+                name: 'forum'
+            });
         }
     }
 
